@@ -1,0 +1,26 @@
+# procrastination_api.py
+from flask import Flask, jsonify
+import random
+
+app = Flask(__name__)
+
+advice = [
+    "Take a 5-minute break.",
+    "Refactor something you already refactored.",
+    "Reorganize your desktop.",
+    "Learn Rust.",
+    "Actually finish what you started.",
+    "Open a new side project.",
+    "Rename your side project.",
+    "Abandon your side project.",
+    "Start a new one called final_final_v2."
+]
+
+@app.route("/advice")
+def get_advice():
+    return jsonify({
+        "productivity_tip": random.choice(advice)
+    })
+
+if __name__ == "__main__":
+    app.run(debug=True)
